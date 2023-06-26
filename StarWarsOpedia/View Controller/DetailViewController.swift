@@ -27,6 +27,7 @@
 /// THE SOFTWARE.
 
 import UIKit
+import Alamofire
 
 class DetailViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
@@ -66,6 +67,48 @@ class DetailViewController: UIViewController {
     item3Label.text = data.item3.value
     
     listTitleLabel.text = data.listTitle
+  }
+}
+
+extension DetailViewController {
+  private func fetch<T: Decodable & Displayable>(_ list: [String], of: T.Type) {
+    var items: [T] = []
+    let fetchGroup = DispatchGroup()
+    
+    list.forEach { (url) in
+      fetchGroup.enter()
+      AF.request(url)
+        .validate()
+        .responseDecodable(of: T.self) { (response) in
+          if let value = response.value {
+            items.append(value)
+          }
+        }
+      
+      fetchGroup.leave()
+    }
+    
+    fetchGroup.notify(queue: .main) { [weak self] in
+      guard let self = self else {
+        return
+      }
+      
+      self.listData = items
+      self.listTableView.reloadData()
+    }
+  }
+  
+  func fetchList() {
+    guard let data = data else {
+      return
+    }
+    
+    switch data {
+    case is Film:
+      fetch(data.listItems, of: Starship.self)
+    default:
+      print("Unknown type: ", String(describing: type(of: data)))
+    }
   }
 }
 
