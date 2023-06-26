@@ -33,6 +33,7 @@ class MainTableViewController: UITableViewController {
   @IBOutlet weak var searchBar: UISearchBar!
   
   var items: [Displayable] = []
+  var selectedItem: Displayable?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -53,6 +54,7 @@ class MainTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    selectedItem = items[indexPath.row]
     return indexPath
   }
   
@@ -60,7 +62,7 @@ class MainTableViewController: UITableViewController {
     guard let destinationVC = segue.destination as? DetailViewController else {
       return
     }
-    destinationVC.data = nil
+    destinationVC.data = selectedItem
   }
 }
 
