@@ -47,6 +47,7 @@ class DetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     commonInit()
+    fetchList()
     
     listTableView.dataSource = self
   }
@@ -83,9 +84,8 @@ extension DetailViewController {
           if let value = response.value {
             items.append(value)
           }
+          fetchGroup.leave()
         }
-      
-      fetchGroup.leave()
     }
     
     fetchGroup.notify(queue: .main) { [weak self] in
@@ -120,6 +120,7 @@ extension DetailViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath)
+    cell.textLabel?.text = listData[indexPath.row].titleLabelText
     return cell
   }
 }
