@@ -33,6 +33,7 @@ class MainTableViewController: UITableViewController {
   @IBOutlet weak var searchBar: UISearchBar!
   
   var items: [Displayable] = []
+  var films: [Film] = []
   var selectedItem: Displayable?
   
   override func viewDidLoad() {
@@ -75,6 +76,7 @@ extension MainTableViewController {
           return
         }
         
+        self.films = films.all
         self.items = films.all
         self.tableView.reloadData()
       }
@@ -100,8 +102,17 @@ extension MainTableViewController {
 // MARK: - UISearchBarDelegate
 extension MainTableViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    guard let shipName = searchBar.text else {
+      return
+    }
+    
+    searchStarsips(for: shipName)
   }
   
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.text = nil
+    searchBar.resignFirstResponder()
+    items = films
+    tableView.reloadData()
   }
 }
