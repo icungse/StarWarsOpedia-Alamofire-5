@@ -62,13 +62,14 @@ class MainTableViewController: UITableViewController {
 extension MainTableViewController {
   func fetchFilms() {
     let request = AF.request("https://swapi.dev/api/films")
-    request.responseDecodable(of: Films.self) { (response) in
-      guard let films = response.value else {
-        return
+      .validate()
+      .responseDecodable(of: Films.self) { (response) in
+        guard let films = response.value else {
+          return
+        }
+        
+        print(films.all[0].title)
       }
-      
-      print(films.all[0].title)
-    }
   }
 }
 
