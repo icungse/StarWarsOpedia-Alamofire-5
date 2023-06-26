@@ -18,6 +18,7 @@
 		FE86D87E2A490EDF005928AD /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86D87D2A490EDF005928AD /* Film.swift */; };
 		FE86D8802A49103E005928AD /* Films.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86D87F2A49103E005928AD /* Films.swift */; };
 		FE86D8822A4914E5005928AD /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86D8812A4914E5005928AD /* Starship.swift */; };
+		FE86D8842A491A7F005928AD /* Starships.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86D8832A491A7F005928AD /* Starships.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		FE86D87D2A490EDF005928AD /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		FE86D87F2A49103E005928AD /* Films.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Films.swift; sourceTree = "<group>"; };
 		FE86D8812A4914E5005928AD /* Starship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
+		FE86D8832A491A7F005928AD /* Starships.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starships.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				FE86D87D2A490EDF005928AD /* Film.swift */,
 				FE86D87F2A49103E005928AD /* Films.swift */,
 				FE86D8812A4914E5005928AD /* Starship.swift */,
+				FE86D8832A491A7F005928AD /* Starships.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				FE86D87E2A490EDF005928AD /* Film.swift in Sources */,
 				FE86D8822A4914E5005928AD /* Starship.swift in Sources */,
 				FE86D8802A49103E005928AD /* Films.swift in Sources */,
+				FE86D8842A491A7F005928AD /* Starships.swift in Sources */,
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
 				E087AADA23620E3B00D1E33E /* MainTableViewController.swift in Sources */,
 				183D953D23DF5A4700845F5F /* Displayable.swift in Sources */,

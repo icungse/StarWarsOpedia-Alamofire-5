@@ -79,6 +79,22 @@ extension MainTableViewController {
         self.tableView.reloadData()
       }
   }
+  
+  func searchStarsips(for name: String) {
+    let url = "https://swapi.dev/api/starships"
+    let parameters: [String: String] = ["search": name]
+    
+    AF.request(url, parameters: parameters)
+      .validate()
+      .responseDecodable(of: Starships.self) { [weak self] response in
+        guard let self = self, let starships = response.value else {
+          return
+        }
+        
+        self.items = starships.all
+        self.tableView.reloadData()
+      }
+  }
 }
 
 // MARK: - UISearchBarDelegate
